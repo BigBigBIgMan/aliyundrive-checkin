@@ -13,10 +13,10 @@ jobs:
           pip3 install -r ./requirements.txt
       - name: Run checkin
         run: |
-          python3 ./main.py --token_string "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJmYTg1NTI3MDExYmM0YjM5YmFkODBiOTk4ODBhMWM0MiIsImF1ZCI6Ijc2OTE3Y2NjY2Q0NDQxYzM5NDU3YTA0ZjYwODRmYjJmIiwiZXhwIjoxNjk4NjQ2NzgzLCJpYXQiOjE2OTA4NzA3ODN9.sMAlQVhkQxQz5ft41MgNg1l8VtE9YXXlmuttryaF779gkRViuC4x7-Y_ea3eYte0B0Qa4Duz366vY704YLnr2w"
+          python3 ./main.py --token_string "${{ secrets.TOKEN }}"
         env:
           PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
-          SERVERCHAN_SENDKEY: SCT207695TV2Mu3zwYCq2JN8dS1sGrSIBF
+          SERVERCHAN_SENDKEY: ${{ secrets.SCKEY }}
           WECOM_WEBHOOK: ${{ secrets.WECOM_WEBHOOK }}
           BARK_DEVICEKEY: ${{ secrets.BARK_DEVICEKEY }}
       - uses: gautamkrishnar/keepalive-workflow@master
