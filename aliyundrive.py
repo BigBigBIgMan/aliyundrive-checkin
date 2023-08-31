@@ -57,12 +57,15 @@ class Aliyundrive:
     """
     @retry(stop=stop_after_attempt(3), wait=wait_fixed(1))
     def _get_access_token(self, token: str) -> tuple[bool, str, str, str]:
+
+        print(token)
+        
         url = 'https://auth.aliyundrive.com/v2/account/token'
         payload = {'grant_type': 'refresh_token', 'refresh_token': token}
 
         response = requests.post(url, json=payload, timeout=5)
         data = response.json()
-
+        print(data)
         if 'code' in data and data['code'] in ['RefreshTokenExpired', 'InvalidParameter.RefreshToken']:
             return False, '', '', data['message']
 
